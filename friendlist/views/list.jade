@@ -1,0 +1,52 @@
+doctype html
+html(lang="en")
+	head
+		title Daftar #{ucfirst(collection)}
+		if numberOfPages == 0
+			- var baseUrl = '../'
+		else
+			- var baseUrl = '../../'
+		link(rel='stylesheet', href=baseUrl+'css/themes/default/jquery.mobile-1.4.5.min.css')
+		link(rel='stylesheet', href=baseUrl+'css/style.css')
+		script(src=baseUrl+'js/jquery.js')
+		script(src=baseUrl+'js/jquery.mobile-1.4.5.min.js')
+		script(type='text/javascript').
+			function doDelete(id){
+				$.ajax({
+					url: '#{baseUrl}#{collection}/#{id}',
+					type: 'DELETE',
+					success: function(){
+						window.location.assign('#{baseUrl}#{collection}/page/1');
+					}
+				});
+			}
+	body
+		#container
+			h3 #{ucfirst(collection)}
+			#main
+				if objects.length > 0
+					table(data-role='table').ui-body-d.ui-shadow.table-stripe.ui-responsive
+						thead
+							tr.ui-bar-d
+								th='No'
+								each val,key in objects[0]
+									th=key
+								th='Hapus'
+						tbody
+							each obj,index in objects
+								tr
+									td=index+1
+									each val,key in obj
+										if key == '_id'
+											- var recordId = val
+											td
+												a(href='../edit/#{val}', title='edit record ini', rel='external') #{val}
+										else
+											td=val
+									td
+										a(href='../delete/#{obj._id}', title='Hapus Record Ini', rel='external') Hapus
+			if numberOfPages != 0
+				ul#pagination
+					- for (var i=1; i<=numberOfPages; i++)
+						li
+							a(href=i, data-rel='external')= i

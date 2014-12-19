@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+	head
+		title Tambah #{ucfirst(collection)} Baru
+		link(rel='stylesheet', href='../../css/themes/default/jquery.mobile-1.4.5.min.css')
+		link(rel='stylesheet', href='../../css/style.css')
+		script("src=../../js/jquery.js")
+		script("src=../../js/jquery.mobile-1.4.5.min.js")
+	body
+		#container
+			- var obj = objects
+			form(method='post', action='../../#{collection}/edit/#{obj._id}', data-ajax='false')
+				label(for='nama') Nama
+				input(type='text', name='nama', id='nama', data-clear-btn='true', value='#{obj.nama}')
+				label(for='alamat') Alamat
+				textarea(name='alamat', id='alamat').
+					#{obj.alamat}
+				label(for='tlp') Telepon
+				input(type='text' name='tlp', id='tlp', data-clear-btn='true', value='#{obj.tlp}')
+				input(type='submit', value='Ubah', data-theme='b')

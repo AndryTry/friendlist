@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+	head
+		title=collection
+		script("src=js/jquery.js")
+		script("src=js/jquery.mobile-1.4.5.min.js")
+	body
+		h3= collection
+		#main
+		- var obj = objects
+		if obj
+			p.
+				Halo, #{obj.nama}
