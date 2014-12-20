@@ -3,4 +3,6 @@ a	{text-decoration:none;}
 #container	{width:80%;margin:10%;}
 #pagination	{list-style:none;}
 #pagination li	{float:left;margin:2px;}
-#pagination li a	{display:block;background:rgba(255,255,255,0);border:1px solid #059;padding:3px 9px;}
+#pagination li a	{display:block;background:rgba(255,255,255,0);border:1px solid #595;padding:2px 9px;color:#594;}
+
+.page-number	{margin:8px 2px;}

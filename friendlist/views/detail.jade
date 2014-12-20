@@ -1,13 +1,29 @@
 doctype html
 html(lang="en")
 	head
-		title=collection
-		script("src=js/jquery.js")
-		script("src=js/jquery.mobile-1.4.5.min.js")
+		title=objects.nama
+		link(rel='stylesheet', href='../css/themes/default/jquery.mobile-1.4.5.min.css')
+		link(rel='stylesheet', href='../css/style.css')
+		script("src=../js/jquery.js")
+		script("src=../js/jquery.mobile-1.4.5.min.js")
 	body
-		h3= collection
-		#main
-		- var obj = objects
-		if obj
-			p.
-				Halo, #{obj.nama}
+		#container
+			#main
+			- var obj = objects
+			if obj
+				.ui-corner-all.custom-corners
+					.ui-bar.ui-bar-a
+						h3 #{obj.nama}
+					.ui-body.ui-body-a
+						table
+							tr
+								td='Alamat'
+								td=' : '
+								td #{obj.alamat}
+							tr
+								td='Telepon'
+								td=' : '
+								td #{obj.tlp}
+				a(href='edit/#{obj._id}', rel='external', data-role='button', style='background:#459;') Ubah
+				a(href='delete/#{obj._id}', rel='external', data-role='button', style='background:#954;') Hapus
+				a(href='page/1', rel='external', data-role='button', style='background:#594;') Daftar Teman

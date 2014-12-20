@@ -39,7 +39,7 @@ CollectionDriver.prototype.findPage = function(collectionName, page, callback) {
     this.getCollection(collectionName, function(error, the_collection) { //A
       if( error ) callback(error);
       else {
-        the_collection.find().limit(objPerPage).skip(objPerPage*(page-1)).toArray(function(error, results) { //B
+        the_collection.find().limit(objPerPage).skip(objPerPage*(page-1)).sort({_id:-1}).toArray(function(error, results) { //B
           if( error ) callback(error);
           else callback(null, results);
         });

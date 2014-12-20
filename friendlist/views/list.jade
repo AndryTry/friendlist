@@ -29,24 +29,22 @@ html(lang="en")
 						thead
 							tr.ui-bar-d
 								th='No'
-								each val,key in objects[0]
-									th=key
-								th='Hapus'
+								th='Nama'
+								th='Manipulate'
 						tbody
 							each obj,index in objects
 								tr
 									td=index+1
-									each val,key in obj
-										if key == '_id'
-											- var recordId = val
-											td
-												a(href='../edit/#{val}', title='edit record ini', rel='external') #{val}
-										else
-											td=val
 									td
-										a(href='../delete/#{obj._id}', title='Hapus Record Ini', rel='external') Hapus
+										a(href='../#{obj._id}', title='Lihat record ini', rel='external', style='color:#594;') #{obj.nama}
+									td
+										a(href='../edit/#{obj._id}', title='Ubah Record Ini', rel='external', style='color:#459;') Ubah
+										&nbsp;|&nbsp;
+										a(href='../delete/#{obj._id}', title='Hapus Record Ini', rel='external', style='color:#954;') Hapus
 			if numberOfPages != 0
 				ul#pagination
 					- for (var i=1; i<=numberOfPages; i++)
 						li
-							a(href=i, data-rel='external')= i
+							a(href=i, data-rel='external').page-number= i
+					li
+						a(href='../new', data-rel='external', data-role='button') Tambah Baru
